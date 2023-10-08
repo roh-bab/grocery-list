@@ -17,7 +17,7 @@
   <body>
     <div class="container">
       <header>
-        <img src="note.jpeg" alt="" />
+        <img src="images/note.jpeg" alt="" />
         <h1 style = "color : blue ; background-Color : black ;padding : 15px"><strong>Shopping List</strong></h1>
       </header>
       <form id="item-form">
@@ -45,7 +45,34 @@
           placeholder="Find Items"
         />
       </div>
-      
+
+      <ul id="item-list" class="items">
+        <li>
+          Apples
+          <button class="remove-item btn-link text-red">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li>
+          Orange Juice
+          <button class="remove-item btn-link text-red">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li>
+          Oreos
+          <button class="remove-item btn-link text-red">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li>
+          Milk
+          <button class="remove-item btn-link text-red">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+      </ul>
+
       <button id="clear" class="btn-clear">Clear All</button>
     </div>
 
