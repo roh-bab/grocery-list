@@ -30,6 +30,7 @@ function addItem(e){
         li.append(button);
         console.log(button);
         itemList.appendChild(li);
+        itemInput.value ='';
 }
 
     function createButton(classes){
