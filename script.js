@@ -2,7 +2,7 @@ const itemForm = document.getElementById('item-form');
 const itemList = document.getElementById('item-list');
 const itemInput = document.getElementById('item-input');
 const clrBtn = document.getElementById('clear');
-const findItem = document.getElementById('find');
+const findItem = document.getElementById('filter');
 
 function display(){
     const itemsFromLocalStorage = getItemsFromStorage();
