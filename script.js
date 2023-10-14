@@ -86,6 +86,7 @@ function addItemToDom(item){
 
     function clearAll(){
         itemList.innerHTML= '';
+        localStorage.removeItem("items");
     }
 
     function fItm(e){
