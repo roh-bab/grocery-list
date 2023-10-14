@@ -1,147 +1,58 @@
-const itemForm = document.getElementById('item-form');
-const itemList = document.getElementById('item-list');
-const itemInput = document.getElementById('item-input');
-const clrBtn = document.getElementById('clear');
-const findItem = document.getElementById('find');
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Grocery List</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="note.jpeg" alt="" />
+        <h1>Grocery List</h1>
+      </header>
+      <form id="item-form">
+        <div class="form-control">
+          <input
+            type="text"
+            class="form-input"
+            id="item-input"
+            name="item"
+            placeholder="Enter Item"
+          />
+        </div>
+        <div class="form-control">
+          <button type="submit" class="btn">
+            <i class="fa-solid fa-plus"></i> Add Item
+          </button>
+        </div>
+      </form>
 
-function display(){
-    const itemsFromLocalStorage = getItemsFromStorage();
-    itemsFromLocalStorage.forEach((item)=>addItemToDom(item));
-}
-function onaddItemSubmit(e){
-    e.preventDefault();
-    const newItem = itemInput.value;
-    console.log(newItem);
-    ///validate Item input ///
-    if(newItem === ''){
-        alert("Please give a item");
-        return;
-    }
-    //amanipulatingingarray = 
-    if(getItemsFromStorage().includes(newItem)){
-        alert("Item already present!")
-        itemInput.value ='';
-        return;
-    }
-    // for (i of items) {
+      <div class="filter">
+        <input
+          type="text"
+          class="form-input-filter"
+          id="find"
+          placeholder="Filter Items"
+        />
+      </div>
 
-    //     if(newItem.lowerCase === i.textContent.toLowerCase){
-    //         alert("This item already exists")
-
-    //     }
-    
-//}
-        addItemToDom(newItem);
-        addItemsToStorage(newItem);
-        itemInput.value ='';
-}
-
-function addItemToDom(item){
-    
-    const items = itemList.querySelectorAll("li");
-    
-    const li = document.createElement("li");
-        li.appendChild(document.createTextNode(item));
-        console.log("success");
-        console.log(li);
-        const button = createButton('remove-item btn-link text-red');//remove-item btn-link text-red
-        li.append(button);
-        console.log(button);
-        itemList.appendChild(li);
-      
-}
-
-    function createButton(classes){
-        const button = document.createElement("button");
-        button.className = classes;
-        const icon = createIcon('fa-solid fa-xmark');//fa-solid fa-plus
-        button.append(icon);
-        return button;
-
-    }
-
-    function createIcon(classes){
-        const icon = document.createElement("i");
-        icon.className = classes;
-        return icon;
-    }
-
-    function removeItem(e){
-        if(e.target.parentElement.classList.contains('remove-item')){
-           if(confirm("Do you want to really remove the item?")){
-            amanipulatingingarray = getItemsFromStorage();
-            console.log('-----------idhar bhai idhar');
-            console.log(e.target.parentElement.parentElement.textContent);
-            var del = e.target.parentElement.parentElement.textContent;
-            console.log(del);
-            e.target.parentElement.parentElement.remove();
-            amanipulatingingarray.pop(del);
-            console.log(amanipulatingingarray);
-            localStorage.setItem("items", JSON.stringify(amanipulatingingarray));
-           }
-            
-        }
-    }
-    console.log(findItem);
-
-    function clearAll(){
-        itemList.innerHTML= '';
-        localStorage.removeItem("items");
-    }
-
-    function fItm(e){
-        const items = itemList.querySelectorAll("li")
-        const fnd = e.target.value.toLowerCase();
+      <ul id="item-list" class="items">
         
-        //console.log(fnd);
+      </ul>
 
-        for (i of items) {
+      <button id="clear" class="btn-clear">Clear All</button>
+    </div>
 
-            if(i.textContent.toLowerCase().indexOf(fnd) != -1){
-        
-            i.style.display = "flex";
-            //console.log(i.textContent);
-        }else{
-            i.style.display = "none";
-        }
-    }
-
-        }
-        
-    function addItemsToStorage(item){
-        const itemsFromLocalStorage = getItemsFromStorage();
-        itemsFromLocalStorage.push(item);
-        localStorage.setItem('items',JSON.stringify(itemsFromLocalStorage));
-        console.log(item);
-        console.log(localStorage.getItem('items'));
-        console.log('-------------------bhai dekh idhar---------------');
-        
-        //itemsFromLocalStorage = JSON.parse("items",getItemsFromStorage());
-        console.log(itemsFromLocalStorage);
-        
-      
-
-        }
-
-    function getItemsFromStorage(){
-        let itemsFromLocalStorage;
-        if(localStorage.getItem('items')=== null){
-            itemsFromLocalStorage=[];
-        }
-        else{
-            itemsFromLocalStorage = JSON.parse(localStorage.getItem('items'));
-
-            }
-            return itemsFromLocalStorage;
-            
-    }
-
-    function init(){
-        itemForm.addEventListener("submit",onaddItemSubmit);
-        itemList.addEventListener("click",removeItem);
-        clrBtn.addEventListener("click",clearAll);
-        findItem.addEventListener("input",fItm);
-        document.addEventListener("DOMContentLoaded",display);
-    }
-
-    init();
+    <script src="script.js"></script>
+  </body>
+</html>
