@@ -20,7 +20,7 @@ function onaddItemSubmit(e){
     //amanipulatingingarray = 
     if(getItemsFromStorage().includes(newItem)){
         alert("Item already present!")
-        itemInput.value ='';
+        itemInput.value ='';//tttt
         return;
     }
     // for (i of items) {
